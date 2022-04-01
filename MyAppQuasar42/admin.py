@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Contact
-from .models import Reservation
+from .models import MBContact
+from .models import MBReservation
 
-admin.site.register(Contact)
-admin.site.register(Reservation)
+admin.site.register(MBContact)
+admin.site.register(MBReservation)
 

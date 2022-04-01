@@ -8,7 +8,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-from .forms import NewUserForm
+from .forms import MBNewUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
@@ -41,36 +41,45 @@ def contact(request):
 
 
 def signup(request):
-    ctx = {'reservation': Reservation.objects.all()}
-    if request.POST:
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
+   
+	
+	form = MBNewUserForm()
+	if request.method == 'POST':
+		form = MBNewUserForm(request.POST)
+		if form.is_valid():
+			username = form.save()
+			username = form.cleaned_data.get('username')
 
-        else:
-            ctx['form'] = form
-    else:
-        form = NewUserForm()
-        ctx['form'] = form
-    return render(request, 'templates/signup.html', ctx)
+			messages.success(request, 'Compte créé pour ' + username)
 
-def logIn(request):
-    if request.POST:
-        username =  request.POST.get('username')
-        pwd =  request.POST.get('password')
-        user = authenticate(request, username=username, password=pwd)
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.info(request, 'Les champs sont incorects')
-    ctx = {'reservation': Reservation.objects.all(), 'active_link': 'login'}
-    return render(request, 'templates/login.html', ctx)
+			return redirect('login')
+		
+
+	context = {'form':form}
+	return render(request, 'signup.html', context)
+
+
+
+def login(request):
+
+	if request.method == 'POST':
+		username = request.POST.get('username')
+		password =request.POST.get('password')
+
+		user = authenticate(request, username=username, password=password)
+
+		if user is not None:
+			
+			return render(request ,'index.html')
+		else:
+			messages.info(request, 'Username OR password is incorrect')
+
+	context = {}
+	return render(request, 'login.html', context)
 
 def logOut(request):
     logout(request)
-    return redirect('index')
+    return redirect('login')
 
 
 
@@ -95,4 +104,6 @@ def reservation (request):
      return render(request, 'reservation.html', {'form':form})
 
 
-    
+
+def about(request):
+    return render(request, 'about.html')

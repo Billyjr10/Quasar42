@@ -1,10 +1,26 @@
+{%  extends 'index.html' %}
+{% load static %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
+    <style>
+        body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #7abecc !important;
+            justify-content: center;
+		}
+      
+    </style>
 </head>
 <body>
     <h3>Formulaire de contact</h3>
@@ -18,11 +34,15 @@
         {{form.as_table}}
         <tr>
             <td>
-                
-                <input type="submit" />
+                <br>
+                <br>
+                <input class="submit" type="submit" />
             </td>
         </tr>
     </table>
 </form>
 </body>
 </html>
+
+{% endblock %}
+

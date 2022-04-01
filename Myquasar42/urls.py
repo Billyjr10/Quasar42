@@ -13,11 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from unicodedata import name
 from django.contrib import admin
 from django.urls import path,include
 from MyAppQuasar42 import views
 
-from MyAppQuasar42.models import Contact
+from MyAppQuasar42.models import MBContact
 
 
 
@@ -28,7 +29,8 @@ from MyAppQuasar42.models import Contact
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('MyAppQuasar42/', views.index),
-    path('contact', views.contact),
+    path('about', views.about, name='about'),
+    path('contact', views.contact, name='contact'),
      path('signup', views.signup, name='signup'),
      path('login', views.login, name='login'),
      path('logout', views.logout, name='logout'),

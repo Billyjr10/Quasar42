@@ -93,7 +93,7 @@
                      <div class="full">
                         <div class="center-desk">
                            <div class="logo">
-                              <a href="index.html"><img src="{% static ' foot_int.jpg' %}" alt="#" /></a>
+                              
                            </div>
                         </div>
                      </div>
@@ -106,21 +106,22 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item">
-                                 <a class="nav-link" href="#about">A Propos</a>
+                                 <a class="nav-link" href="{% url 'about' %}">A Propos</a>
                               </li>
 
                               <li class="nav-item">
-                                 <a class="nav-link" href="reservation.html">Reserver</a>
+                                 <a class="nav-link" href="{% url 'reservation' %}">Reserver</a>
                               </li>
 
                              
                               </li>
 
                               <li class="nav-item">
-                                 <a class="nav-link" href="#contact">Contactez-nous</a>
+                                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                               </li>
                            </ul>
-                           <div class="sign_btn"><a href="login.html">Connectez-vous</a></div>
+                           <div class="sign_btn"><a href="{% url 'login' %}">Connexion</a></div>
+                           <div class="sign_btn"><a href="{% url 'login' %}">Déconnexion</a></div>
                         </div>
                      </nav>
                   </div>
@@ -128,6 +129,7 @@
             </div>
          </div>
       </header>
+      {% block content %}
       <!-- end header inner -->
       <!-- end header -->
       <!-- banner -->
@@ -140,7 +142,7 @@
                         <h1>Bienvenue au complexe Quasar42 </h1>
                         <span>Venez profitez de nos terrains </span>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
-                        <a href="about.html">En savoir plus</a>
+                        <a href="{% url 'reservation' %}">En savoir plus</a>
                      </div>
                   </div>
                </div>
@@ -151,7 +153,7 @@
       <!-- form_lebal -->
       
       <!-- end form_lebal -->
-      <!-- choose  section -->
+      <!-- football  section -->
       <div class="choose">
          <div class="container">
             <div class="row">
@@ -161,172 +163,123 @@
                         <h2><span class="text_norlam">Pour les amoureux du</span> <br>Ballon rond</h2>
                      </div>
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
-                     <a class="read_more" href="#">See More</a>
+                     <a class="read_more" href="{% url 'reservation' %}">Voir</a>
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="row">
                      <div class="col-md-12">
                         <div class="img_box">
-                           <figure><img src="{% static 'images/img1.jpg' %} " alt="#"/></figure>
+                           <figure><img src="{% static 'foot_int.jpg' %} " alt="#"/></figure>
+                           <p>Foot1</p>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="img_box">
+                           <figure><img src="{% static 'demiterrain.jpg' %} " alt="#"/></figure>
+                           <p>Foot2</p>
+                        </div>
+                     </div>
+
+                     <div class="col-md-6">
+                        <div class="img_box">
+                           <figure><img src="{% static 'foottousterrain.jpg' %} " alt="#"/></figure>
+                           <p>Foot3</p>
+                        </div>
+                     </div>
+
+                     </div>         
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end football  section -->
+      <!-- basket  section -->
+      <div class="choose">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="choose_box">
+                     <div class="titlepage">
+                        <h2><span class="text_norlam">Pour les amoureux du</span> <br>Parquet</h2>
+                     </div>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
+                     <a class="read_more" href="{% url 'reservation' %}">Voir</a>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="img_box">
+                           <figure><img src="{% static 'terrain de basket.jpg' %} " alt="#"/></figure>
+                           <p>Basket1</p>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="img_box">
+                           <figure><img src="{% static 'terrain de basket complexe.jpg' %} " alt="#"/></figure>
+                           <p>Basket2</p>
+                        </div>
+                     </div>
+
+                     <div class="col-md-6">
+                        <div class="img_box">
+                           <figure><img src="{% static 'five.jpg' %} " alt="#"/></figure>
+                           <p>Basket3</p>
+                        </div>
+                     </div>
+
+                     </div>         
+                  </div>
+               </div>
+            </div>
+         </div>
+      <!-- end basket  section -->
+     
+      
+      <!-- boxe -->
+      <div class="choose">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="choose_box">
+                     <div class="titlepage">
+                        <h2><span class="text_norlam">Pour les amoureux du</span> <br>Ring</h2>
+                     </div>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
+                     <a class="read_more" href="{% url 'reservation' %}">Voir</a>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="img_box">
+                           <figure><img src="{% static 'ring1.jpg' %} " alt="#"/></figure>
+                           <p>boxe1</p>
                            
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="img_box">
-                           <figure><img src="{% static 'images/img2.jpg' %} " alt="#"/></figure>
+                           <figure><img src="{% static 'ring4.jpg' %} " alt="#"/></figure>
+                           <p>boxe2</p>
                         </div>
                      </div>
-                    
+
+                     <div class="col-md-6">
+                        <div class="img_box">
+                           <figure><img src="{% static 'ring3.jpg' %} " alt="#"/></figure>
+                           <p>boxe3</p>
+                        </div>
+                     </div>
+
+                     </div>         
                   </div>
                </div>
             </div>
          </div>
-      </div>
-      <!-- end choose  section -->
-      <!-- our  section -->
-      <div class="our">
-         <div class="container">
-            <div class="row d_flex">
-               <div class="col-md-6">
-                  <div class="img_box">
-                     <figure><img src="{% static 'images/img4.jpg' %} " alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="our_box">
-                     <div class="titlepage">
-                        <h2><span class="text_norlam">Amoureux du </span> <br>Parquet</h2>
-                     </div>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
-                     <a class="read_more" href="#">Read More</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end our  section -->
-      <!-- about -->
-      <div id="about"  class="about">
-         <div class="container-fluid">
-            <div class="row d_flex">
-               <div class="col-md-6">
-                  <div class="about_text">
-                     <div class="titlepage">
-                        <h2>About Our Hotel</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="about_img">
-                     <figure><img src="{% static 'images/about_img.jpg' %} " alt="#"/></figure>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end about -->
-      <!-- testimonial -->
-      <div class="testimonial">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Testimonial</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-12">
-                  <div id="myCarousel" class="carousel slide testimonial_Carousel " data-ride="carousel">
-                     <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                     </ol>
-                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                           <div class="container">
-                              <div class="carousel-caption ">
-                                 <div class="row">
-                                    <div class="col-md-6 margin_boot">
-                                       <div class="test_box">
-                                          <h4>Mark jonson</h4>
-                                          <i><img src="{% static 'images/te1.png' %} " alt="#"/></i>
-                                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="test_box">
-                                          <h4>Mac Du</h4>
-                                          <i><img src="{% static 'images/te1.png' %} " alt="#"/></i>
-                                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="carousel-item">
-                           <div class="container">
-                              <div class="carousel-caption">
-                                 <div class="row">
-                                    <div class="col-md-6 margin_boot">
-                                       <div class="test_box">
-                                          <h4>Paul Pogba</h4>
-                                          <i><img src="{% static 'images/te1.png' %} " alt="#"/></i>
-                                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="test_box">
-                                          <h4>Charles Yaiche</h4>
-                                          <i><img src="{% static ' images/te1.png' %} " alt="#"/></i>
-                                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="carousel-item">
-                           <div class="container">
-                              <div class="carousel-caption">
-                                 <div class="row">
-                                    <div class="col-md-6 margin_boot">
-                                       <div class="test_box">
-                                          <h4>Mark jonson</h4>
-                                          <i><img src="{% static 'images/te1.png' %} " alt="#"/></i>
-                                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="test_box">
-                                          <h4>Mac Du</h4>
-                                          <i><img src="{% static 'images/te1.png' %} " alt="#"/></i>
-                                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                     <span class="sr-only">Previous</span>
-                     </a>
-                     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                     <span class="sr-only">Next</span>
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end testimonial -->
+      <!-- end boxe -->
       <!--  footer -->
       <footer id="contact">
          <div class="footer">
@@ -334,36 +287,21 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="titlepage">
-                        <h2>Contact Us</h2>
+                        <h2>Vener découvrir notre complexe</h2>
                      </div>
                      <div class="cont">
-                        <h3>Envoyer nous vos messages pour des propositions </h3>
+                        <h3>Un espae accueillant pour sportifs amateurs ou professionnels <br> venez comme vous etes! </h3>
                         
                      </div>
                   </div>
-                  <div class="col-md-6">
-                     <form id="request" class="main_form">
-                        <div class="row">
-                           <div class="col-md-12 ">
-                              <input class="contactus" placeholder="Full Name" type="type" name="Full Name"> 
-                           </div>
-                           <div class="col-md-12">
-                              <input class="contactus" placeholder="Email" type="type" name="Email"> 
-                           </div>
-                           <div class="col-md-12">
-                              <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number">                          
-                           </div>
-                           <div class="col-md-12">
-                              <textarea class="textarea" placeholder="Message" type="type" Message="Name">Message </textarea>
-                           </div>
-                           <div class="col-sm-12">
-                              <button class="send_btn">Send</button>
-                           </div>
-                        </div>
-                     </form>
-                  </div>
+
+                  <div class="sign_btn"><a href="https://www.bing.com/maps?q=edta+sornas&FORM=HDRSC4">On y va!</a></div>
                </div>
+
+              
+
             </div>
+            {% endblock %}
             <div class="copyright">
                <div class="container">
                   <div class="row">
