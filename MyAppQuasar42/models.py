@@ -2,7 +2,7 @@ import email
 from email import message
 from logging import PlaceHolder
 from pyexpat import model
-from tkinter import Widget
+
 
 
 from unittest.util import _MAX_LENGTH

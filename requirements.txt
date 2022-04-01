@@ -1,5 +1,5 @@
 gunicorn
 psycopg2
 django-crispy-forms
-tkinter
+
 django-heroku
