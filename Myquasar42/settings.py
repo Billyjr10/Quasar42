@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-$=^a39-52tcvuukrfg^3^3wro(k13y$yubr&p2*%^e^0fv!-5n
 DEBUG = True
 
 ALLOWED_HOSTS = ["billy-quasar42.herokuapp.com"]
-
-
+ALLOWED_HOSTS = ["quasar42.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
