@@ -28,7 +28,7 @@ from MyAppQuasar42.models import MBContact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('MyAppQuasar42/', views.index),
+    path('', views.index),
     path('about', views.about, name='about'),
     path('contact', views.contact, name='contact'),
      path('signup', views.signup, name='signup'),
