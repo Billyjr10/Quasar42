@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["quasar42.herokuapp.com"] 
 ALLOWED_HOSTS = ["127.0.0.1"] 
-ALLOWED_HOSTS = ["billy-quasar42.herokuapp.com"]
+
 
 
 # Application definition
@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
