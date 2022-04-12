@@ -90,7 +90,7 @@ def randomOrderNumber(length):
 
 
 
-@login_required
+@login_required(login_url='/login')
 def reservation (request):
      form = ReservationForm
      if request.method == 'POST':
