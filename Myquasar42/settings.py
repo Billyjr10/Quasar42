@@ -149,7 +149,7 @@ EMAIL_HOST_PASSWORD="billythekid1"
 
 #Authentication
 LOGIN_REDIRECT_URL= 'templates:index'
-
+REDIRECT_FIELD_NAME= 'login'
 
 
 
