@@ -7,7 +7,7 @@ from pyexpat import model
 
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from django.forms import SplitDateTimeWidget, SplitHiddenDateTimeWidget
+from django.forms import CharField, HiddenInput, SplitDateTimeWidget, SplitHiddenDateTimeWidget
 
 
 
@@ -28,5 +28,8 @@ class MBReservation(models.Model):
     Phone = models.IntegerField(max_length=10)
     Email = models.EmailField(max_length=40)
     Nom_du_lieu_choisie = models.TextField(blank=True)
-    Date_choisie = models.TimeField(null = True)
+    Date_choisie = models.DateField(null = True)
     Heure_choisie = models.TimeField(null = True)
+    ref = models.CharField(max_length=6)
+
+

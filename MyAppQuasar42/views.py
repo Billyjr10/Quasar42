@@ -1,6 +1,7 @@
 from ast import Return
 import random
 from re import template
+
 from unittest import loader
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
@@ -32,7 +33,7 @@ def contact(request):
           contactForm=ContactForm(request.POST)
           if contactForm.is_valid():
               contactForm.save()
-              messages.success(request,'Message envoyé avec succes!')
+              messages.success(request,'Message envoyé avec succes!!!!!')
               return redirect('/contact')
       return render(request, 'contact.html', {'form':form})
 
@@ -89,21 +90,32 @@ def randomOrderNumber(length):
     return number0
 
 
-
 @login_required(login_url='/login')
 def reservation (request):
-     form = ReservationForm
+     form = ReservationForm()
      if request.method == 'POST':
           reservationForm=ReservationForm(request.POST)
           if reservationForm.is_valid():
-              reservationForm.save()
-              
-              messages.success(request,'Votre réservation a bien été enregistré !')
-                      
-              return redirect('/reservation') 
+              res = reservationForm.save(commit=False)
+              randomNum = randomOrderNumber(6)
+              res.ref = randomNum
+              request.session['ref'] = randomNum
+              res.save()
+              messages.success(request,'Votre réservation a bien été enregistré !!!!!')
+              return redirect('/success') 
+          else:
+                messages.success(request,'Votre réservation n`\'est pas valide !!!!!')
+                return redirect('/reservation') 
      return render(request, 'reservation.html', {'form':form})
 
 
 
 def about(request):
     return render(request, 'about.html')
+
+
+
+def success(request):
+       return render(request,'success.html', {'randomnum':request.session['ref']})
+   
+    
