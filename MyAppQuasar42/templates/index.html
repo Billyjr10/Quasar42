@@ -106,22 +106,29 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item">
-                                 <a class="nav-link" href="{% url 'about' %}">A Propos</a>
+                                 <a class="nav-link" href="{% url 'about' %}"><strong>A Propos</strong></a>
                               </li>
 
                               <li class="nav-item">
-                                 <a class="nav-link" href="{% url 'reservation' %}">Reserver</a>
+                                 <a class="nav-link" href="{% url 'reservation' %}"><strong>Reserver</strong></a>
                               </li>
 
                              
                               </li>
 
                               <li class="nav-item">
-                                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                                 <a class="nav-link" href="{% url 'contact' %}"><strong>Contact</strong></a>
                               </li>
                            </ul>
+
+                           {% if user.is_authenticated %}
+                           <div class="sign_btn"><a href="{% url 'logout' %}"><strong>Déconnexion</strong></a></div>
+                           <div class="sign_btn"><h3><strong>Bienvenue {{user}}</strong></h3></div>
+                           {% else %}
                            <div class="sign_btn"><a href="{% url 'login' %}">Connexion</a></div>
-                           <div class="sign_btn"><a href="{% url 'login' %}">Déconnexion</a></div>
+                           {% endif %}
+
+                          
                         </div>
                      </nav>
                   </div>
@@ -141,7 +148,7 @@
                      <div class="padding_lert">
                         <h1>Bienvenue au complexe Quasar42 </h1>
                         <span>Venez profitez de nos terrains </span>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+                        <p></p>
                         <a href="{% url 'about' %}">En savoir plus</a>
                      </div>
                   </div>
@@ -162,7 +169,7 @@
                      <div class="titlepage">
                         <h2><span class="text_norlam">Pour les amoureux du</span> <br>Ballon rond</h2>
                      </div>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
+                     <p>"Un seul sport n'a connu ni arrêts ni reculs : le football. <br> A quoi cela peut-il tenir sinon à la valeur intrinsèque du jeu lui-même, aux émotions qu'il procure, à l'intérêt qu'il présente ?" <br> <strong>Cristiano Ronaldo</strong></p>
                      <a class="read_more" href="{% url 'reservation' %}">Voir</a>
                   </div>
                </div>
@@ -171,20 +178,20 @@
                      <div class="col-md-12">
                         <div class="img_box">
                            <figure><img src="{% static 'foot_int.jpg' %} " alt="#"/></figure>
-                           <p>Foot1</p>
+                           <p><strong>Foot1</p></strong> 
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="img_box">
                            <figure><img src="{% static 'demiterrain.jpg' %} " alt="#"/></figure>
-                           <p>Foot2</p>
+                           <p><strong>Foot2</strong></p>
                         </div>
                      </div>
 
                      <div class="col-md-6">
                         <div class="img_box">
                            <figure><img src="{% static 'foottousterrain.jpg' %} " alt="#"/></figure>
-                           <p>Foot3</p>
+                           <p><strong>Foot3</strong></p>
                         </div>
                      </div>
 
@@ -204,7 +211,7 @@
                      <div class="titlepage">
                         <h2><span class="text_norlam">Pour les amoureux du</span> <br>Parquet</h2>
                      </div>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
+                     <p>" Le talent gagne les matches, mais le travail d'équipe et l'intelligence gagnent les championnats." <br> <strong>Michael Jordan</strong>  </p>
                      <a class="read_more" href="{% url 'reservation' %}">Voir</a>
                   </div>
                </div>
@@ -213,20 +220,20 @@
                      <div class="col-md-12">
                         <div class="img_box">
                            <figure><img src="{% static 'terrain de basket.jpg' %} " alt="#"/></figure>
-                           <p>Basket1</p>
+                           <p><strong>Basket1</strong></p>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="img_box">
                            <figure><img src="{% static 'terrain de basket complexe.jpg' %} " alt="#"/></figure>
-                           <p>Basket2</p>
+                           <p><strong>Basket2</strong></p>
                         </div>
                      </div>
 
                      <div class="col-md-6">
                         <div class="img_box">
                            <figure><img src="{% static 'five.jpg' %} " alt="#"/></figure>
-                           <p>Basket3</p>
+                           <p><strong>Basket3</strong></p>
                         </div>
                      </div>
 
@@ -247,7 +254,7 @@
                      <div class="titlepage">
                         <h2><span class="text_norlam">Pour les amoureux du</span> <br>Ring</h2>
                      </div>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit </p>
+                     <p>"Il y en a qui disent qu'ils aiment la boxe. Ils ne savent pas de quoi ils parlent. La boxe est une histoire de respect, se faire respecter, au dépend de l'autre." <br> <strong>Maëlle Pariez</strong> </p>
                      <a class="read_more" href="{% url 'reservation' %}">Voir</a>
                   </div>
                </div>
@@ -256,21 +263,21 @@
                      <div class="col-md-12">
                         <div class="img_box">
                            <figure><img src="{% static 'ring1.jpg' %} " alt="#"/></figure>
-                           <p>boxe1</p>
+                           <p><strong>boxe1</strong></p>
                            
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="img_box">
                            <figure><img src="{% static 'ring4.jpg' %} " alt="#"/></figure>
-                           <p>boxe2</p>
+                          <p><strong>boxe2</strong></p>
                         </div>
                      </div>
 
                      <div class="col-md-6">
                         <div class="img_box">
                            <figure><img src="{% static 'ring3.jpg' %} " alt="#"/></figure>
-                           <p>boxe3</p>
+                           <p><strong>boxe3</strong></p>
                         </div>
                      </div>
 
@@ -295,7 +302,7 @@
                      </div>
                   </div>
 
-                  <div class="sign_btn"><a href="https://www.bing.com/maps?q=edta+sornas&FORM=HDRSC4">On y va!</a></div>
+                  <div class="sign_btn"><a href="https://www.bing.com/maps?q=edta+sornas&FORM=HDRSC4"><strong>On y va!</strong> </a></div>
                </div>
 
               
@@ -306,7 +313,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-12">
-                        <p>Copyright 2022 All Right Reserved By <a href="https://html.design/"> Quasar42</a></p>
+                        <p><strong>Copyright 2022 All Right Reserved By <a href="http://btssio2022.edta-sornas.com/MouhammadBillyG/portfolio/portfolio.html"> Quasar42</a></strong></p>
                      </div>
                   </div>
                </div>

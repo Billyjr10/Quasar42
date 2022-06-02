@@ -28,14 +28,16 @@ from MyAppQuasar42.models import MBContact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', views.index, name='index'),
     path('about', views.about, name='about'),
     path('contact', views.contact, name='contact'),
     path('signup', views.signup, name='signup'),
     path('login', views.login, name='login'),
-    path('logout', views.logout, name='logout'),
+    path('logout', views.logOut, name='logout'),
     path('reservation', views.reservation, name='reservation'),
+    path('reservation/2', views.reservation2, name='reservation2'),
     path('success', views.success, name='success'),
+    path('success', views.base, name='base'),
    
    
    

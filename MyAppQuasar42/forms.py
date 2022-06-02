@@ -1,8 +1,8 @@
-from dataclasses import fields
+from dataclasses import Field, fields
 from os import rename
 from pyexpat import model
 from django.forms import ModelForm
-from .models import MBContact, MBReservation
+from .models import MBContact, MBLieux, MBReservation
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -32,4 +32,10 @@ class MBUserForm(User):
 class ReservationForm(ModelForm):
     class Meta :
         model = MBReservation
-        fields = ['Name', 'Phone', 'Email', 'Nom_du_lieu_choisie', 'Date_choisie', 'Heure_choisie']  
+        fields = ['Name', 'Phone', 'Email', 'Date_choisie', 'Heure_choisie']  
+
+
+class ReservationForm2(ModelForm):
+    class Meta :
+        model = MBLieux
+        fields = ['Nom_du_lieu_choisie']

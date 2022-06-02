@@ -1,4 +1,5 @@
 from ast import Return
+import datetime
 import random
 from re import template
 
@@ -9,22 +10,21 @@ from django.template import loader
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-from .forms import MBNewUserForm
-from django.contrib.auth import authenticate, login, logout
+from .forms import MBNewUserForm, ReservationForm2,  ReservationForm
+from django.contrib.auth import authenticate, login as auth_login, logout
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from .forms import ContactForm
-from .forms import ReservationForm
+
 from django.contrib import messages
 
-
-  
+from django.utils.dateparse import parse_date
+import json
 
 # Create your views here.
 
 def index(request):
-    template = loader.get_template('index.html')
-    return HttpResponse(template.render())
+    return render(request, 'index.html')
 
 
 def contact(request):
@@ -63,20 +63,20 @@ def signup(request):
 
 def login(request):
 
-	if request.method == 'POST':
-		username = request.POST.get('username')
-		password =request.POST.get('password')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password =request.POST.get('password')
 
-		user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
 
-		if user is not None:
-			
-			return render(request ,'index.html')
-		else:
-			messages.info(request, 'Username OR password is incorrect')
+        if user is not None:
+            auth_login(request, user)
+            return redirect('index')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
 
-	context = {}
-	return render(request, 'login.html', context)
+    context = {}
+    return render(request, 'login.html', context)
 
 def logOut(request):
     logout(request)
@@ -90,15 +90,48 @@ def randomOrderNumber(length):
     return number0
 
 
+def defaultconverterDate(o):
+  if isinstance(o, datetime.date):
+      return o.__str__()
+
+
+
+
 @login_required(login_url='/login')
 def reservation (request):
      form = ReservationForm()
      if request.method == 'POST':
           reservationForm=ReservationForm(request.POST)
           if reservationForm.is_valid():
+              data = reservationForm.cleaned_data
+              request.session['Name'] = data['Name']
+              request.session['Phone'] = data['Phone']
+              request.session['Email'] = data['Email']
+              request.session['Date_Choisie'] =  json.dumps(data['Date_choisie'].isoformat())
+              request.session['Heure_Choisie'] = json.dumps(data['Heure_choisie'].isoformat())
+            #   messages.success(request, request.session['Date_Choisie'])
+              return redirect('/reservation/2') 
+          else:
+                messages.success(request,'Votre réservation n`\'est pas valide !!!!!')
+                return redirect('/reservation') 
+     return render(request, 'reservation.html', {'form':form})
+
+
+
+@login_required(login_url='/login')
+def reservation2 (request):
+     form = ReservationForm2()
+     if request.method == 'POST':
+          reservationForm=ReservationForm2(request.POST)
+          if reservationForm.is_valid():
               res = reservationForm.save(commit=False)
               randomNum = randomOrderNumber(6)
               res.ref = randomNum
+              res.Name = request.session['Name']
+              res.Phone = request.session['Phone']
+              res.Email = request.session['Email']
+              res.Date_choisie = json.loads(request.session['Date_Choisie'])
+              res.Heure_choisie = json.loads(request.session['Heure_Choisie'])
               request.session['ref'] = randomNum
               res.save()
               messages.success(request,'Votre réservation a bien été enregistré !!!!!')
@@ -106,7 +139,7 @@ def reservation (request):
           else:
                 messages.success(request,'Votre réservation n`\'est pas valide !!!!!')
                 return redirect('/reservation') 
-     return render(request, 'reservation.html', {'form':form})
+     return render(request, 'reservation2.html', {'form':form})
 
 
 
@@ -117,5 +150,8 @@ def about(request):
 
 def success(request):
        return render(request,'success.html', {'randomnum':request.session['ref']})
+
+def base(request):
+    return render(request, 'base.html')       
    
     
