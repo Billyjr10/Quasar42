@@ -37,5 +37,5 @@ class ReservationForm(ModelForm):
 
 class ReservationForm2(ModelForm):
     class Meta :
-        model = MBLieux
+        model = MBReservation
         fields = ['Nom_du_lieu_choisie']
