@@ -1,2 +1,3 @@
 web: gunicorn Myquasar42.wsgi:application
-reminder: python src/quickstart.py
+python manage.py collectstatic --noinput
+manage.py migrate
