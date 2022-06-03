@@ -3,6 +3,7 @@ import email
 from email import message
 from logging import PlaceHolder
 from pyexpat import model
+from tkinter import CASCADE
 
 from unittest.util import _MAX_LENGTH
 from django.db import models
@@ -37,7 +38,7 @@ class MBReservation(models.Model):
     Name = models.CharField(max_length=20)
     Phone = models.IntegerField()
     Email = models.EmailField(max_length=40)
-    Nom_du_lieu_choisie = models.ForeignKey(to='MBLieux', choices=CHOICES, on_delete=models.CASCADE)
+    Nom_du_lieu_choisie = models.ForeignKey(to='MBLieux',  on_delete=models.CASCADE)
     Date_choisie = models.DateField(blank=False)
     Heure_choisie = models.TimeField(blank=False)
     ref = models.CharField(max_length=6)
