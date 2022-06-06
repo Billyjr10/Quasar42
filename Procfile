@@ -1,1 +1,1 @@
-web: gunicorn <Myquasar42>.wsgi
+web: gunicorn Myquasar42.wsgi
