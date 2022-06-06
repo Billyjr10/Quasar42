@@ -3,3 +3,11 @@ psycopg2
 django-crispy-forms
 whitenoise
 django-heroku
+
+
+asgiref==3.3.1
+Django==3.1.7
+Pillow==8.1.2
+python-environ==0.4.54
+pytz==2021.1
+sqlparse==0.4.1
