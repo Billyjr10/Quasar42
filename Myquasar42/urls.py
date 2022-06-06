@@ -35,7 +35,6 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('logout', views.logOut, name='logout'),
     path('reservation', views.reservation, name='reservation'),
-    path('reservation/2', views.reservation2, name='reservation2'),
     path('success', views.success, name='success'),
     path('success', views.base, name='base'),
    

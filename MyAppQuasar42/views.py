@@ -109,8 +109,11 @@ def reservation (request):
               request.session['Email'] = data['Email']
               request.session['Date_Choisie'] =  json.dumps(data['Date_choisie'].isoformat())
               request.session['Heure_Choisie'] = json.dumps(data['Heure_choisie'].isoformat())
-            #   messages.success(request, request.session['Date_Choisie'])
-              return redirect('/reservation/2') 
+              reservation=reservationForm.save()
+              reservation.ref=randomOrderNumber(6)
+              reservation.save()
+              messages.success(request, f'Votre réservation est enregistrée (ref {reservation.ref})' )
+              return redirect('/reservation' ) 
           else:
                 messages.success(request,'Votre réservation n`\'est pas valide !!!!!')
                 return redirect('/reservation') 
@@ -118,28 +121,7 @@ def reservation (request):
 
 
 
-@login_required(login_url='/login')
-def reservation2 (request):
-     form = ReservationForm2()
-     if request.method == 'POST':
-          reservationForm=ReservationForm2(request.POST)
-          if reservationForm.is_valid():
-              res = reservationForm.save(commit=False)
-              randomNum = randomOrderNumber(6)
-              res.ref = randomNum
-              res.Name = request.session['Name']
-              res.Phone = request.session['Phone']
-              res.Email = request.session['Email']
-              res.Date_choisie = json.loads(request.session['Date_Choisie'])
-              res.Heure_choisie = json.loads(request.session['Heure_Choisie'])
-              request.session['ref'] = randomNum
-              res.save()
-              messages.success(request,'Votre réservation a bien été enregistré !!!!!')
-              return redirect('/success') 
-          else:
-                messages.success(request,'Votre réservation n`\'est pas valide !!!!!')
-                return redirect('/reservation') 
-     return render(request, 'reservation2.html', {'form':form})
+
 
 
 

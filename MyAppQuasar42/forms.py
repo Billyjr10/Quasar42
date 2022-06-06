@@ -32,7 +32,7 @@ class MBUserForm(User):
 class ReservationForm(ModelForm):
     class Meta :
         model = MBReservation
-        fields = ['Name', 'Phone', 'Email', 'Date_choisie', 'Heure_choisie']  
+        fields = ['Name', 'Phone', 'Email', 'Date_choisie', 'Heure_choisie', 'Nom_du_lieu_choisie']  
 
 
 class ReservationForm2(ModelForm):
