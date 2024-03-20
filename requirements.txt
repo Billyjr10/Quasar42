@@ -1,7 +1,7 @@
 gunicorn
 psycopg2
 django-crispy-forms
-whitenoise
+#whitenoise
 django-heroku
 
 
