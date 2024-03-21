@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: python:3.12.2
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: pip install -r requirements.txt
+
+      - run:
+          name: Run tests
+          command: python manage.py test
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
