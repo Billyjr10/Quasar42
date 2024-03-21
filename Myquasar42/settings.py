@@ -157,6 +157,5 @@ EMAIL_HOST_PASSWORD="billythekid1"
 LOGIN_REDIRECT_URL= 'templates:index'
 
 
-
-
-
+#Other configurations
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
