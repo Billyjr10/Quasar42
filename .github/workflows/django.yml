@@ -33,3 +33,8 @@ jobs:
           npm install -g jshint
           jshint .
         continue-on-error: true
+      - name: Run Tests with Code Coverage
+        run: |
+          pip install coverage
+          coverage run --source='.' manage.py test
+          coverage report -m
