@@ -28,10 +28,10 @@ jobs:
       - name: Run Tests
         run: |
           python manage.py test
-      - name: Run JSHint
+      - name: Run Flake8 for Linting
         run: |
-          npm install -g jshint
-          jshint .
+          pip install flake8
+          flake8 .
         continue-on-error: true
       - name: Run Tests with Code Coverage
         run: |
