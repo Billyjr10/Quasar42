@@ -63,17 +63,15 @@ jobs:
       - name: Extract issue number from tag
         id: issue-number
         run: echo "::set-output name=number::$(echo ${{ github.ref }} | cut -d '-' -f 3)"
-      
+
       - name: Debug issue number
         run: echo "Issue number to close: ${{ steps.issue-number.outputs.number }}"
-
-
+      
       - name: Close GitHub Issue
         uses: peter-evans/close-issue@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ steps.issue-number.outputs.number }}
-
       
       - name: Notify Monitoring System (e.g., Sentry)
         run: |
