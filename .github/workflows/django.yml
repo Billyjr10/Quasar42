@@ -63,14 +63,15 @@ jobs:
       - name: Extract issue number from tag
         id: issue-number
         run: echo "::set-output name=number::$(echo ${{ github.ref }} | cut -d '-' -f 3)"
-
+      
       - name: Close GitHub Issue
         uses: peter-evans/close-issue@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ steps.issue-number.outputs.number }}
 
-     - name: Notify Monitoring System (e.g., Sentry)
+      
+      - name: Notify Monitoring System (e.g., Sentry)
         run: |
           curl https://sentry.io/api/0/projects/thekyojins/python-django/issues/${{ steps.issue-number.outputs.number }}/resolve/ \
           -H 'Authorization: Bearer ${{ secrets.SENTRY_AUTH_TOKEN }}'
