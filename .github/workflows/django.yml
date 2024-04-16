@@ -3,6 +3,8 @@ name: Django CI
 on:
   push:
     branches: [ "main" ]
+    tags:
+      - 'resolved-issue-*'
   pull_request:
     branches: [ "main" ]
   issues:
@@ -52,3 +54,23 @@ jobs:
           git fetch
           git checkout -b issue-${{ github.event.issue.number }} origin/main
           git push origin issue-${{ github.event.issue.number }}
+
+  resolve-issue:
+    if: startsWith(github.ref, 'refs/tags/resolved-issue-')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Extract issue number from tag
+        id: issue-number
+        run: echo "::set-output name=number::$(echo ${{ github.ref }} | cut -d '-' -f 3)"
+
+      - name: Close GitHub Issue
+        uses: peter-evans/close-issue@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ steps.issue-number.outputs.number }}
+
+     - name: Notify Monitoring System (e.g., Sentry)
+        run: |
+          curl https://sentry.io/api/0/projects/thekyojins/python-django/issues/${{ steps.issue-number.outputs.number }}/resolve/ \
+          -H 'Authorization: Bearer ${{ secrets.SENTRY_AUTH_TOKEN }}'
