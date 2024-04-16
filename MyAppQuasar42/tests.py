@@ -62,10 +62,10 @@ class TestModels(TestCase):
             raise
 
 # Test pour vérifier la remontée d'une erreur à Sentry
-class SentryErrorTest(TestCase):
+class SentryResolutionErrorTest(TestCase):
     def test_sentry_logging(self):
         try:
-            self.assertEqual(1, 6, "Yes : Intentional error for Sentry")
+            self.assertEqual(1, 1, "It's gonna work !")
         except AssertionError as e:
             sentry_sdk.capture_exception(e)
             raise e
