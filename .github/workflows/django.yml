@@ -5,10 +5,11 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  issues:
+    types: [opened]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -38,3 +39,16 @@ jobs:
           pip install coverage
           coverage run --source='.' manage.py test
           coverage report -m
+
+  create-branch-for-issue:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create Branch for Issue
+        run: |
+          git config --global user.email "tkyojins@gmail.com"
+          git config --global user.name "The Kyojins"
+          git fetch
+          git checkout -b issue-${{ github.event.issue.number }} origin/main
+          git push origin issue-${{ github.event.issue.number }}

@@ -21,7 +21,20 @@ from django.contrib import messages
 from django.utils.dateparse import parse_date
 import json
 
+from django.http import HttpResponse
+import sentry_sdk
+
 # Create your views here.
+
+def generate_error(request):
+    sentry_sdk.start_transaction(op="test", name="My First Test Transaction")
+    try:
+        # Code qui génère une erreur
+        1 / 0
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+    return HttpResponse("Error generated successfully")
+
 
 def index(request):
     return render(request, 'index.html')

@@ -17,9 +17,8 @@ from unicodedata import name
 from django.contrib import admin
 from django.urls import path,include
 from MyAppQuasar42 import views
-
+from django.urls import path
 from MyAppQuasar42.models import MBContact
-
 
 
 
