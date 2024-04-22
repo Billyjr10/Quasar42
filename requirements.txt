@@ -3,6 +3,7 @@ psycopg2
 django-crispy-forms
 #whitenoise
 django-heroku
+django-prometheus
 
 
 asgiref==3.3.1
