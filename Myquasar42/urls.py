@@ -37,8 +37,8 @@ urlpatterns = [
     path('reservation', views.reservation, name='reservation'),
     path('success', views.success, name='success'),
     path('success', views.base, name='base'),
-    path('metrics', django_prometheus_exports.ExportToDjangoView, name='prometheus-django-metrics'),
-   
+    path('', include('django_prometheus.urls')),
+
    
    
 
