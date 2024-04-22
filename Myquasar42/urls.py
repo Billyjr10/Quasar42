@@ -19,7 +19,8 @@ from django.urls import path,include
 from MyAppQuasar42 import views
 from django.urls import path
 from MyAppQuasar42.models import MBContact
-
+from django.urls import path
+from django_prometheus import exports as django_prometheus_exports
 
 
 
@@ -36,6 +37,7 @@ urlpatterns = [
     path('reservation', views.reservation, name='reservation'),
     path('success', views.success, name='success'),
     path('success', views.base, name='base'),
+    path('metrics', django_prometheus_exports.ExportToDjangoView, name='prometheus-django-metrics'),
    
    
    
