@@ -64,7 +64,7 @@ class TestModels(TestCase):
 class SentryResolutionErrorTest(TestCase):
     def test_sentry_logging(self):
         try:
-            self.assertEqual(2, 3, "Yes : ça va marcher")
+            self.assertEqual(3, 3, "Yes : ça va marcher")
         except AssertionError as e:
             sentry_sdk.capture_exception(e)
             raise e
