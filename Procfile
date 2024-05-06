@@ -1,1 +1,0 @@
-web: gunicorn Myquasar42.wsgi
